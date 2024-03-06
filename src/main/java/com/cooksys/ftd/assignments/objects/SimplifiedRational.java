@@ -1,10 +1,8 @@
 package com.cooksys.ftd.assignments.objects;
 
-import com.cooksys.ftd.assignments.objects.util.MissingImplementationException;
-
 public class SimplifiedRational implements IRational {
-    int numerator;
-    int denominator;
+    private final int numerator;
+    private final int denominator;
 
     /**
      * Determines the greatest common denominator for the given values
@@ -14,17 +12,21 @@ public class SimplifiedRational implements IRational {
      * @return the greatest common denominator, or shared factor, of `a` and `b`
      * @throws IllegalArgumentException if a <= 0 or b < 0
      */
-    public static int gcd(int a, int b) throws IllegalArgumentException {
-        if (a <= 0 || b < 0) {
+    public static int gcd(int numerator, int denominator) throws IllegalArgumentException {
+        if (numerator <= 0 || denominator < 0) {
             throw new IllegalArgumentException();
         }
-        while (b != 0) {
-            int sub = b;
-            b = a % b;
-            a = sub;
+
+        int gcd = numerator;
+        int divisor = denominator;
+
+        while (divisor != 0) {
+            int sub = divisor;
+            divisor = gcd % divisor;
+            gcd = sub;
         }
 
-        return a;
+        return gcd;
     }
 
     /**
@@ -133,6 +135,7 @@ public class SimplifiedRational implements IRational {
      */
     @Override
     public String toString() {
-        return (numerator < 0 != denominator < 0 ? "-" : "") + Math.abs(numerator) + "/" + Math.abs(denominator);
+        String sign = numerator < 0 != denominator < 0 ? "-" : "";
+        return String.format("%s%d/%d", sign, Math.abs(numerator), Math.abs(denominator));
     }
 }

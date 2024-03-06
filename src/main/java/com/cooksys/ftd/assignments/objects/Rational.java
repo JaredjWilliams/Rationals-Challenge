@@ -1,11 +1,9 @@
 package com.cooksys.ftd.assignments.objects;
 
-import com.cooksys.ftd.assignments.objects.util.MissingImplementationException;
-
 public class Rational implements IRational {
 
-    private int numerator;
-    private int denominator;
+    private final int numerator;
+    private final int denominator;
     /**
      * Constructor for rational values of the type:
      * <p>
@@ -85,6 +83,7 @@ public class Rational implements IRational {
      */
     @Override
     public String toString() {
-        return (getNumerator() < 0 != getDenominator() < 0 ? "-" : "") + Math.abs(getNumerator()) + "/" + Math.abs(getDenominator());
+        String sign = numerator < 0 != denominator < 0 ? "-" : "";
+        return String.format("%s%d/%d", sign, Math.abs(numerator), Math.abs(denominator));
     }
 }

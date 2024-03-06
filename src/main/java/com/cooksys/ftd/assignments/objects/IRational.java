@@ -1,7 +1,5 @@
 package com.cooksys.ftd.assignments.objects;
 
-import com.cooksys.ftd.assignments.objects.util.MissingImplementationException;
-
 interface IRational {
 
 	/**
@@ -116,7 +114,6 @@ interface IRational {
 		if (that == null) {
 			throw new IllegalArgumentException();
 		}
-
 
 		return construct((getNumerator() * that.getNumerator()), getDenominator() * that.getDenominator());
 	}
