@@ -86,4 +86,5 @@ public class Rational implements IRational {
         String sign = numerator < 0 != denominator < 0 ? "-" : "";
         return String.format("%s%d/%d", sign, Math.abs(numerator), Math.abs(denominator));
     }
+    
 }
